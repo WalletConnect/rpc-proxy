@@ -10,7 +10,7 @@ use crate::{
 #[test_context(ServerContext)]
 #[tokio::test]
 async fn health_check(ctx: &mut ServerContext) {
-    let addr = format!("http://{}/health", ctx.server.public_addr);
+    let addr = format!("{}/health", ctx.server.public_addr);
 
     let client = Client::builder().build::<_, hyper::Body>(HttpsConnector::new());
 
@@ -28,7 +28,7 @@ async fn health_check(ctx: &mut ServerContext) {
 #[test_context(ServerContext)]
 #[tokio::test]
 async fn metrics_check(ctx: &mut ServerContext) {
-    let addr = format!("htpps://{}/metrics", ctx.server.public_addr);
+    let addr = format!("{}/metrics", ctx.server.public_addr);
 
     let client = Client::builder().build::<_, hyper::Body>(HttpsConnector::new());
 
@@ -47,7 +47,7 @@ async fn metrics_check(ctx: &mut ServerContext) {
 #[tokio::test]
 async fn eip155_1_mainnet_infura(ctx: &mut ServerContext) {
     let addr = format!(
-        "http://{}/v1?projectId={}&chainId=",
+        "{}/v1?projectId={}&chainId=",
         ctx.server.public_addr, ctx.server.project_id
     );
 
@@ -75,7 +75,7 @@ async fn eip155_1_mainnet_infura(ctx: &mut ServerContext) {
 #[tokio::test]
 async fn eip155_3_ropsten_infura(ctx: &mut ServerContext) {
     let addr = format!(
-        "http://{}/v1?projectId={}&chainId=",
+        "{}/v1?projectId={}&chainId=",
         ctx.server.public_addr, ctx.server.project_id
     );
 
@@ -104,7 +104,7 @@ async fn eip155_3_ropsten_infura(ctx: &mut ServerContext) {
 #[tokio::test]
 async fn eip155_42_kovan_infura(ctx: &mut ServerContext) {
     let addr = format!(
-        "http://{}/v1?projectId={}&chainId=",
+        "{}/v1?projectId={}&chainId=",
         ctx.server.public_addr, ctx.server.project_id
     );
 
@@ -133,7 +133,7 @@ async fn eip155_42_kovan_infura(ctx: &mut ServerContext) {
 #[tokio::test]
 async fn eip155_4_rinkeby_infura(ctx: &mut ServerContext) {
     let addr = format!(
-        "http://{}/v1?projectId={}&chainId=",
+        "{}/v1?projectId={}&chainId=",
         ctx.server.public_addr, ctx.server.project_id
     );
 
@@ -162,7 +162,7 @@ async fn eip155_4_rinkeby_infura(ctx: &mut ServerContext) {
 #[tokio::test]
 async fn eip155_5_goerli_infura(ctx: &mut ServerContext) {
     let addr = format!(
-        "http://{}/v1?projectId={}&chainId=",
+        "{}/v1?projectId={}&chainId=",
         ctx.server.public_addr, ctx.server.project_id
     );
 
@@ -190,7 +190,7 @@ async fn eip155_5_goerli_infura(ctx: &mut ServerContext) {
 #[tokio::test]
 async fn eip155_137_polygon_mainnet_infura(ctx: &mut ServerContext) {
     let addr = format!(
-        "http://{}/v1?projectId={}&chainId=",
+        "{}/v1?projectId={}&chainId=",
         ctx.server.public_addr, ctx.server.project_id
     );
 
@@ -218,7 +218,7 @@ async fn eip155_137_polygon_mainnet_infura(ctx: &mut ServerContext) {
 #[tokio::test]
 async fn eip155_80001_polygon_mumbai_infura(ctx: &mut ServerContext) {
     let addr = format!(
-        "http://{}/v1?projectId={}&chainId=",
+        "{}/v1?projectId={}&chainId=",
         ctx.server.public_addr, ctx.server.project_id
     );
 
@@ -246,7 +246,7 @@ async fn eip155_80001_polygon_mumbai_infura(ctx: &mut ServerContext) {
 #[tokio::test]
 async fn eip155_10_optimism_mainnet_infura(ctx: &mut ServerContext) {
     let addr = format!(
-        "http://{}/v1?projectId={}&chainId=",
+        "{}/v1?projectId={}&chainId=",
         ctx.server.public_addr, ctx.server.project_id
     );
 
@@ -274,7 +274,7 @@ async fn eip155_10_optimism_mainnet_infura(ctx: &mut ServerContext) {
 #[tokio::test]
 async fn eip155_69_optimism_kovan_infura(ctx: &mut ServerContext) {
     let addr = format!(
-        "http://{}/v1?projectId={}&chainId=",
+        "{}/v1?projectId={}&chainId=",
         ctx.server.public_addr, ctx.server.project_id
     );
 
@@ -303,7 +303,7 @@ async fn eip155_69_optimism_kovan_infura(ctx: &mut ServerContext) {
 #[tokio::test]
 async fn eip155_420_optimism_goerli_infura(ctx: &mut ServerContext) {
     let addr = format!(
-        "http://{}/v1?projectId={}&chainId=",
+        "{}/v1?projectId={}&chainId=",
         ctx.server.public_addr, ctx.server.project_id
     );
 
@@ -331,7 +331,7 @@ async fn eip155_420_optimism_goerli_infura(ctx: &mut ServerContext) {
 #[tokio::test]
 async fn eip155_42161_arbitrum_mainnet_infura(ctx: &mut ServerContext) {
     let addr = format!(
-        "http://{}/v1?projectId={}&chainId=",
+        "{}/v1?projectId={}&chainId=",
         ctx.server.public_addr, ctx.server.project_id
     );
 
@@ -359,7 +359,7 @@ async fn eip155_42161_arbitrum_mainnet_infura(ctx: &mut ServerContext) {
 #[tokio::test]
 async fn eip155_421611_arbitrum_rinkeby_infura(ctx: &mut ServerContext) {
     let addr = format!(
-        "http://{}/v1?projectId={}&chainId=",
+        "{}/v1?projectId={}&chainId=",
         ctx.server.public_addr, ctx.server.project_id
     );
 
@@ -388,7 +388,7 @@ async fn eip155_421611_arbitrum_rinkeby_infura(ctx: &mut ServerContext) {
 #[tokio::test]
 async fn eip155_421613_arbitrum_goerli_infura(ctx: &mut ServerContext) {
     let addr = format!(
-        "http://{}/v1?projectId={}&chainId=",
+        "{}/v1?projectId={}&chainId=",
         ctx.server.public_addr, ctx.server.project_id
     );
 

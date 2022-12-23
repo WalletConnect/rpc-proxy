@@ -14,10 +14,11 @@ use {
 };
 
 pub struct RpcProxy {
-    pub public_addr: SocketAddr,
+    pub public_addr: String,
+    pub port: Option<u16>,
     pub project_id: String,
-    shutdown_signal: tokio::sync::broadcast::Sender<()>,
-    is_shutdown: bool,
+    pub shutdown_signal: Option<tokio::sync::broadcast::Sender<()>>,
+    pub is_shutdown: bool,
 }
 
 #[derive(Debug, thiserror::Error)]
@@ -54,9 +55,10 @@ impl RpcProxy {
         }
 
         Self {
-            public_addr,
+            public_addr: format!("http://{}", public_addr),
             project_id,
-            shutdown_signal: signal,
+            port: Some(public_port),
+            shutdown_signal: Some(signal),
             is_shutdown: false,
         }
     }
@@ -66,8 +68,10 @@ impl RpcProxy {
             return;
         }
         self.is_shutdown = true;
-        let _ = self.shutdown_signal.send(());
-        wait_for_server_to_shutdown(self.public_addr.port())
+        if let Some(sender) = &self.shutdown_signal {
+            let _ = sender.send(());
+        }
+        wait_for_server_to_shutdown(self.port.unwrap())
             .await
             .unwrap();
     }
