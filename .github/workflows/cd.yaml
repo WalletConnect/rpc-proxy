@@ -120,15 +120,15 @@ jobs:
             cache: {}
           - name: "Integration Tests: Pokt - localhost"
             cmd: test
-            args: --all-features -- functional::connection::pokt
+            args: -- functional::connection::pokt
             cache: { sharedKey: "tests" }
           - name: "Integration Tests: Infura - localhost" 
             cmd: test
-            args: --all-features -- functional::connection::infura
+            args:  -- functional::connection::infura
             cache: { sharedKey: "tests" }
           - name: "Integration Tests: Binance - localhost"
             cmd: test
-            args: --all-features -- functional::connection::binance
+            args: -- functional::connection::binance
             cache: { sharedKey: "tests" }
     steps: 
       # Checkout code
