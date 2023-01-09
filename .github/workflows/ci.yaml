@@ -49,17 +49,17 @@ jobs:
             cmd: fmt
             args: -- --check
             cache: {}
-          - name: "Integration Tests: Pokt"
+          - name: "Integration Tests: Pokt - localhost"
             cmd: test
-            args: --all-features -- functional::connection::pokt
+            args:  --features test-localhost -- functional::connection::pokt
             cache: { sharedKey: "tests" }
-          - name: "Integration Tests: Infura" 
+          - name: "Integration Tests: Infura - localhost" 
             cmd: test
-            args: --all-features -- functional::connection::infura
+            args: --features test-localhost -- functional::connection::infura
             cache: { sharedKey: "tests" }
-          - name: "Integration Tests: Binance"
+          - name: "Integration Tests: Binance - localhost"
             cmd: test
-            args: --all-features -- functional::connection::binance
+            args: --features test-localhost -- functional::connection::binance
             cache: { sharedKey: "tests" }
         include:
           - os: ubuntu-latest
